@@ -1,0 +1,39 @@
+import csv
+import pandas as pd
+
+def Q1():
+    with open('salary.csv','w',newline='') as sal:
+        data=[['Empid','Empname','Department','Experience','Salary'],
+              [1,'BRIJESH','MCA','10 Years',100000],
+              [2,'OM','MBA','8 Years',85000],
+              [3,'SAI','BCA','5 Years',65000],
+              [4,'RAM','BBA','2 Years',15000],
+              [5,'DEV','BCA','4 Years',35000]]
+        w=csv.writer(sal)
+        w.writerows(data)
+print('Data are Successfully Written.')
+Data are Successfully Written.
+def Q2():
+    with open('salary.csv','r',newline='') as sal:
+        r=csv.reader(sal)
+        for i in sal:
+            print(i)
+def Q3():
+    with open('salary.csv','a',newline='') as sal:
+        data=[[6,'KRISH','BCA','6 Years',75000],
+              [7,'RADHA','BBA','1 Years',20000]]
+        w=csv.writer(sal)
+        w.writerows(data)
+def Q4():
+    with open('salary.csv','r',newline='') as sal:
+        data=csv.DictReader(sal)
+        l=[]
+        s=0
+        for i in data:
+            d=i['Department']
+            if d=='BCA':
+                s+=int(i['Salary'])
+                print('The Total Salary of BCA Department is : {}'.format(s))
+def Q5():
+    df=pd.read_csv('salary.csv')
+    print(df)
